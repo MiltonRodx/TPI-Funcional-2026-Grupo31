@@ -224,15 +224,15 @@
   ;; *** EJEMPLOS DE IMPLEMENTACION DE LOS REQUERIMIENTOS
   ;; ** Requerimiento 1:
   (format t "*** Requerimiento 1: *** ~%")
-  (format t "Camino Normal: ~a ~%" (transicion 'en-rojo 'verde))
-  (format t "Camino alternativo: ~a% ~%" (transicion 'en-verde 'verde))
-  (format t "Camino por error: ~a ~%~%" (transicion 'hola 'mundo))
+  (format t "Camino Normal: ~a ~%" (transicion 'en-rojo 'verde))    ;devuelve (EN-ROJO "cambiar-a-verde")
+  (format t "Camino alternativo: ~a% ~%" (transicion 'en-verde 'verde)) ;devuelve (EN-VERDE ACCION-POR-DEFECTO)
+  (format t "Camino por error: ~a ~%~%" (transicion 'hola 'mundo)); devuelve (HOLA ACCION-POR-DEFECTO)
   (format t "---------------------------------------------------~%")
 
   ;; ** Requerimiento 2:
   (format t "*** Requerimiento 2: *** ~%")
-  (format t "Camino Normal: ~a ~%" (semaforo-timer 200000))
-  (format t "Camino alternativo: ~a% ~%" (semaforo-timer 2049340.02))
+  (format t "Camino Normal: ~a ~%" (semaforo-timer 200000)) ;devuelve EN-VERDE
+  (format t "Camino alternativo: ~a% ~%" (semaforo-timer 2049340.02))  ;devuelve NIL
   (format t "Camino por error: ~a ~%~%" (semaforo-timer 'symbol-malintencionado))
   (format t "---------------------------------------------------~%")
 
