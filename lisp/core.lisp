@@ -247,14 +247,14 @@
   (format t "*** Requerimiento 4a: *** ~%")
   (format t "Camino Normal: ~a ~%" (duracion-ciclo 2000))
   (format t "Camino alternativo: ~a% ~%" (duracion-ciclo 2000.0))
-  (format t "Camino por error: ~a ~%~%" (duracion-ciclo 'dosmil))
+  (format t "Camino por error: ~a ~%~%" (duracion-ciclo 4000))
   (format t "---------------------------------------------------~%")
 
   ;; ** Requerimiento 4b:
   (format t "*** Requerimiento 4b: *** ~%")
   (format t "Camino Normal: ~a ~%" (recomendacion-ciclo 200))
   (format t "Camino alternativo: ~a% ~%" (recomendacion-ciclo 2000.0))
-  (format t "Camino por error: ~a ~%~%" (recomendacion-ciclo 'dosmil))
+  (format t "Camino por error: ~a ~%~%" (recomendacion-ciclo 2000.0))
   (format t "---------------------------------------------------~%")
   
   ;; ** Requerimiento 5:
