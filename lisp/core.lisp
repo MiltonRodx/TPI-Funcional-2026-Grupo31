@@ -247,14 +247,14 @@
   (format t "*** Requerimiento 4a: *** ~%")
   (format t "Camino Normal: ~a ~%" (duracion-ciclo 2000))
   (format t "Camino alternativo: ~a% ~%" (duracion-ciclo 2000.0))
-  (format t "Camino por error: ~a ~%~%" (duracion-ciclo 4000))
+  (format t "Camino por error: ~a ~%~%" (duracion-ciclo 'cuatro-mil))
   (format t "---------------------------------------------------~%")
 
   ;; ** Requerimiento 4b:
   (format t "*** Requerimiento 4b: *** ~%")
   (format t "Camino Normal: ~a ~%" (recomendacion-ciclo 200))
   (format t "Camino alternativo: ~a% ~%" (recomendacion-ciclo 2000.0))
-  (format t "Camino por error: ~a ~%~%" (recomendacion-ciclo 2000.0))
+  (format t "Camino por error: ~a ~%~%" (recomendacion-ciclo 'doscientos))
   (format t "---------------------------------------------------~%")
   
   ;; ** Requerimiento 5:
@@ -293,25 +293,20 @@
 ;; --------------------------------------------------------
 
 (defun informe (datos)
-  (with-open-file (stream "informe-ejecucion-semaforo.txt" :direction :output)
+  (with-open-file (stream "informe-ejecucion-semaforo.txt" 
+                          :direction :output
+                          :if-exists :supersede)
     (format stream "Informe de Ejecución del Sistema Semafórico~%")
     (format stream "=========================================~%")
-    ;; Implementar iteración sobre datos y formateo
-    ;; Ejemplo de línea: "2024-06-04 14:30:15 - Transición: ROJO → VERDE"
 
     (mapcar
       #'(lambda (x)
           (format stream "~a - Transición: ~a -> ~a~%" 
               (local-time:format-timestring nil 
-            (local-time:unix-to-timestamp (car x))
-            :format '(:year "-" (:month 2) "-" (:day 2) " " (:hour 2) ":" (:min 2) ":" (:sec 2)))
-
-            (cadr x)    ; color-anterior
-            (caddr x)   ; color-nuevo
-          )  
-        ) datos
-    ) 
+                (local-time:unix-to-timestamp (car x))
+                :format '(:year "-" (:month 2) "-" (:day 2) " " (:hour 2) ":" (:min 2) ":" (:sec 2)))
+            (cadr x)
+            (caddr x)))
+      datos)
   
-    (format stream "~% --- Fin del Informe ---")
-  )
-)
+    (format stream "~% --- Fin del Informe ---")))
