@@ -82,7 +82,8 @@
 ;; 213- 215 → intermitencia
 ;; 216- 221 → en-amarillo
 
-
+;; Determina el estado actual del semáforo a partir
+;; de un timestamp utilizando el ciclo configurado.
 (defun semaforo-timer (timestamp)
   (cond
     ((integerp timestamp)
@@ -193,6 +194,9 @@
 ;; ESTRATEGIA: Función de orden superior
 ;; IMPACTO: No destructiva
 ;; --------------------------------------------------------
+
+;; Calcula el porcentaje de tiempo que el semáforo
+;; permanece en cada estado durante una hora de funcionamiento.
 (defun distribucion-temporal ()
   (let ((ciclos-por-hora (ciclos-por-tiempo 60)))
     (mapcar
@@ -291,6 +295,9 @@
 ;; ESTRATEGIA: Función de orden superior
 ;; IMPACTO: No Destructiva
 ;; --------------------------------------------------------
+;; Genera un archivo de texto con el historial de transiciones
+;; registradas por el sistema semafórico.
+;; Cada registro contiene fecha, estado anterior y estado nuevo.
 
 (defun informe (datos)
   (with-open-file (stream "informe-ejecucion-semaforo.txt" :direction :output)
@@ -298,7 +305,9 @@
     (format stream "=========================================~%")
     ;; Implementar iteración sobre datos y formateo
     ;; Ejemplo de línea: "2024-06-04 14:30:15 - Transición: ROJO → VERDE"
-
+    
+;; Recorre cada transición recibida y la escribe
+;; en el archivo con un formato legible para el usuario.
     (mapcar
       #'(lambda (x)
           (format stream "~a - Transición: ~a -> ~a~%" 
