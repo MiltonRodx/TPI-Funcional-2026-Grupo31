@@ -1,6 +1,6 @@
 # Código de Honor y Declaración de Autoría
 
-### Integrante: [Quintana FLores LAutaro] - Usuario GitHub: [lautaroflores31-dot]
+### Integrante: [Quintana FLores Lautaro] - Usuario GitHub: [lautaroflores31-dot]
 
 Marque con una X la opción que mejor describa su situación para cada componente del trabajo:
 
