@@ -40,7 +40,7 @@ TPI-Funcional-2026-Grupo31/
 ```
 
 ## Estado
-
+✔️ Implementación del código finalizada -- lunes 1 de junio de 2026.
 🚧 En desarrollo — entrega límite: martes 16 de junio de 2026.
 
 
