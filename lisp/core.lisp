@@ -200,7 +200,7 @@
 (defun distribucion-temporal ()
   (let ((ciclos-por-hora (ciclos-por-tiempo 60)))
     (mapcar
-      #'(lambda (x)
+      (lambda (x)
           (cons (car x)
             (* (/ (* (cdr x) ciclos-por-hora) 3600.0) 100.0))
         )
@@ -313,7 +313,7 @@
 ;; en el archivo con un formato legible para el usuario.
 
     (mapcar
-      #'(lambda (x)
+      (lambda (x)
           (format stream "~a - Transición: ~a -> ~a~%" 
               (local-time:format-timestring nil 
                 (local-time:unix-to-timestamp (car x))
