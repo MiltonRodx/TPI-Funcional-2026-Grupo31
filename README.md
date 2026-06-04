@@ -14,7 +14,7 @@
 | Lautaro Sebastian Quintana Flores | [@lautaroflores31-dot](https://github.com/lautaroflores31-dot) |
 | Nestor Javier Nacimiento | [@maverick8585](https://github.com/maverick8585) |
 | Juliana Eva Fernandez | [@julindez](https://github.com/julindez) |
-| Adolfo Joaquin Jesus Rodriguez | — |
+| Adolfo Joaquin Jesus Rodriguez | [@joaquinro144-spec](https://github.com/joaquinro144-spec) |
 
 ---
 
