@@ -102,3 +102,7 @@ TPI-Funcional-2026-Grupo31/
 | Informe PDF | ✅ Completado |
 | Video YouTube | ✅ Completado |
 | Entrega final | 📅 16 de junio de 2026 |
+
+<p align="center">
+  <img src="docs/SemaforoInteligente.png" width="800">
+</p>
