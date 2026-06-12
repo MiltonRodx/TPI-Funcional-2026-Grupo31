@@ -240,11 +240,11 @@
   (format t "Camino por error: ~a ~%~%" (semaforo-timer 'symbol-malintencionado))
   (format t "---------------------------------------------------~%")
 
-  ;; ** Requerimiento 3:
+  ;; ** Requerimiento 3: 
   (format t "*** Requerimiento 3: *** ~%")
-  (format t "Camino Normal: ~a ~%" (log-cambio-estado 200000 'rojo 'verde))
-  (format t "Camino alternativo: ~a% ~%" (log-cambio-estado 20394994 "en rojo" "verde"))
-  (format t "Camino por error: ~a ~%~%" (log-cambio-estado 'timestampthing 'symbol 'other-symbol))
+  (format t "Camino Normal: ~a ~%" (log-cambio-estado 200000 'rojo 'verde)) ;DEVUELVE Tiempo 1970-01-03 07:33:20: la luz ha cambiado de ROJO a VERDE
+  (format t "Camino alternativo: ~a% ~%" (log-cambio-estado 20394994 "en rojo" "verde")) ;DEVUELVE Tiempo 1970-08-25 01:16:34: la luz ha cambiado de en rojo a verde
+  (format t "Camino por error: ~a ~%~%" (log-cambio-estado 'timestampthing 'symbol 'other-symbol)) ;DEVUELVE nil
   (format t "---------------------------------------------------~%")
 
   ;; ** Requerimiento 4a:
