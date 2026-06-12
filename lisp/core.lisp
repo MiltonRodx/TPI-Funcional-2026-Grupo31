@@ -139,7 +139,7 @@
 (defun duracion-ciclo (segundos)
   (cond
     ((integerp segundos)
-      (list (nth-value 0 (floor segundos +duracion-ciclo-total+)) (recomendacion-ciclo +duracion-ciclo-total+)))
+      (list (nth-value 0 (floor segundos +duracion-ciclo-total+)) (recomendacion-ciclo segundos)))
   )
 )
 
@@ -159,7 +159,7 @@
       ((integerp duracion)
       (cond
         ((< duracion 35) 'ciclo-corto)
-        ((<= 35 duracion 150) 'ciclo-optimo)
+        ((or (< 35 duracion 150) (= 35 duracion) (= duracion 150))  'ciclo-optimo)
         (t 'ciclo-largo))
       )
     )
