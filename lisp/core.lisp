@@ -157,14 +157,10 @@
 ;; --------------------------------------------------------
 (defun recomendacion-ciclo (duracion)
     (cond
-      ((integerp duracion)
-      (cond
-        ((< duracion 35) 'ciclo-corto)
-        ((or (< 35 duracion 150) (= 35 duracion) (= duracion 150))  'ciclo-optimo)
+      ((AND(integerp duracion)(< duracion 35)) 'ciclo-corto)
+       ((AND (integerp duracion) (or (< 35 duracion 150) (= 35 duracion) (= duracion 150)))  'ciclo-optimo)
         (t 'ciclo-largo))
       )
-    )
-)
 
 ;; =========================================================
 ;; REQUERIMIENTO 5: Planificación Temporal
