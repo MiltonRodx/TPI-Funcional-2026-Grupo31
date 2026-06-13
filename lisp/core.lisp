@@ -140,7 +140,8 @@
   (cond
     ((integerp segundos)
       (list (nth-value 0 (floor segundos +duracion-ciclo-total+)) (recomendacion-ciclo segundos)))
-  )
+;nth 0 muestra el primer valor del floor que seria el cociente de la operacion(representa ciclos)
+    )
 )
 
 
