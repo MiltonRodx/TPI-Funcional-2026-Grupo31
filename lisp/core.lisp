@@ -238,7 +238,7 @@
   (format t "*** Requerimiento 2: *** ~%")
   (format t "Camino Normal: ~a ~%" (semaforo-timer 200000)) ;devuelve EN-VERDE
   (format t "Camino alternativo: ~a% ~%" (semaforo-timer 2049340.02))  ;devuelve NIL
-  (format t "Camino por error: ~a ~%~%" (semaforo-timer 'symbol-malintencionado))
+  (format t "Camino por error: ~a ~%~%" (semaforo-timer 'symbol-malintencionado)) ;devuelve NIL
   (format t "---------------------------------------------------~%")
 
   ;; ** Requerimiento 3: 
