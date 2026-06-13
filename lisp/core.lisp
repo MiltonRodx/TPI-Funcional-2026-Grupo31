@@ -156,11 +156,15 @@
 ;; IMPACTO: No destructiva
 ;; --------------------------------------------------------
 (defun recomendacion-ciclo (duracion)
-    (cond
-      ((AND(integerp duracion)(< duracion 35)) 'ciclo-corto)
-       ((AND (integerp duracion) (<= 35 duracion 150))  'ciclo-optimo)
-        (t 'ciclo-largo))
-      )
+  (cond
+    ((integerp duracion)
+         (cond
+           ((< duracion 35)    'ciclo-corto)
+          ((<= duracion 150)  'ciclo-optimo)
+           (t'ciclo-largo))
+     )
+    )
+)
 
 ;; =========================================================
 ;; REQUERIMIENTO 5: Planificación Temporal
