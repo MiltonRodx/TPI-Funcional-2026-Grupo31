@@ -179,7 +179,7 @@
 (defun ciclos-por-tiempo (minutos)
   (cond
     ((integerp minutos)
-      (nth-value 0 (floor (* minutos 60) +duracion-ciclo-total+))
+      (nth-value 0 (floor (* minutos 60) +duracion-ciclo-total+)) ;multiplico minutos por 60 para pasarla a segundos
     )
   )
 )
