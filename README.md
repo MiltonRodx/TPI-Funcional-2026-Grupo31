@@ -28,7 +28,7 @@
 
 | Entregable | Link |
 |---|---|
-| 🎥 Video demo (YouTube) | [Ver video](https://www.youtube.com/watch?v=TU9nxIDWvV4) |
+| 🎥 Video demo (YouTube) | [Ver video](https://www.youtube.com/watch?v=iwezgXkdh8g) |
 | 📄 Informe técnico | [`docs/INFORME.pdf`](docs/INFORME.pdf) |
 | ⚖️ Código de Honor | [`docs/HONOR.md`](docs/HONOR.md) |
 | 💻 Código Lisp | [`lisp/core.lisp`](lisp/core.lisp) |

@@ -36,7 +36,7 @@
 ;; --------------------------------------------------------
 (defun transicion (color-actual cambiar-a)
   (cond 
-    ((and(eq color-actual 'en-rojo) (eq cambiar-a 'intermitencia)) 
+    ((and(eq color-actual 'en-rojo) (eq cambiar-a 'intermitencia))
         (list color-actual "cambiar-a-intermitencia"))
     
     ((and(eq color-actual 'en-intermitencia) (eq cambiar-a 'verde))
@@ -203,6 +203,7 @@
     (mapcar
       (lambda (x)
           (cons (car x)
+            ;; Retorna el porcentaje que ocupa un color en un ciclo.
             (* (/ (* (cdr x) ciclos-por-hora) 3600.0) 100.0))
         )
       
@@ -324,4 +325,4 @@
       datos)
   
     (format stream "~% --- Fin del Informe ---")))
-    
+
