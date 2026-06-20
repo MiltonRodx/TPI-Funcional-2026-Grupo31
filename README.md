@@ -103,3 +103,10 @@ TPI-Funcional-2026-Grupo31/
 | Video YouTube | ✅ Completado |
 | Entrega final | 📅 16 de junio de 2026 |
 
+---
+
+##  Agradecimientos
+
+Agradecemos a la cátedra por permitirnos presentar este trabajo práctico integrador y por el espacio de aprendizaje brindado. 
+
+— *Grupo N°31*
