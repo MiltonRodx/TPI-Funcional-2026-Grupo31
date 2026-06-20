@@ -78,7 +78,7 @@
 ;; =========================================================
 
 ;; --------------------------------------------------------
-;; FUNCIÓN: timer
+;; FUNCIÓN: semaforo-timer
 ;; NATURALEZA: Pura                 (Dado un timestamp, siempre retorna un color symbol)
 ;; ESTRATEGIA: Funcion Condicional  (evalúa condiciones sobre los argumentos) 
 ;; IMPACTO: No destructiva          (solo retorna un symbol)
