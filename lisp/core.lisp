@@ -20,8 +20,16 @@
 (defconstant +duracion-rojo+ 90)
 (defconstant +duracion-amarillo+ 6)
 (defconstant +duracion-verde+ 120)
-(defconstant +duracion-ciclo-total+ 222)
 (defconstant +duracion-intermitencia+ 3)
+
+
+(defconstant +duracion-ciclo-total+
+  (+ +duracion-rojo+
+     +duracion-verde+
+     +duracion-amarillo+
+     (* 3 +duracion-intermitencia+)))  ;; 225
+
+
 
 
 ;; =========================================================
@@ -81,6 +89,7 @@
 ;; 93 - 212 → en-verde
 ;; 213- 215 → intermitencia
 ;; 216- 221 → en-amarillo
+;; 222- 224 → intermitencia
 
 ;; Determina el estado actual del semáforo a partir
 ;; de un timestamp utilizando el ciclo configurado.
@@ -94,6 +103,7 @@
           ((<= 93 offset 212) 'en-verde)
           ((<= 213 offset 215) 'intermitencia)
           ((<= 216 offset 221) 'en-amarillo)
+          ((<= 222 offset 224) 'intermitencia)
         )
       )
     )
@@ -209,7 +219,7 @@
         (cons 'rojo +duracion-rojo+)
         (cons 'amarillo +duracion-amarillo+)
         (cons 'verde +duracion-verde+)
-        (cons 'intermitencia (* 2 +duracion-intermitencia+))  ; 6 segundos en total (dos períodos)
+        (cons 'intermitencia (* 3 +duracion-intermitencia+))  ; 9 segundos en total (tres períodos)
       )
     )
   )
