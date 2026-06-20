@@ -44,7 +44,7 @@
 ;; --------------------------------------------------------
 (defun transicion (color-actual cambiar-a)
   (cond 
-    ((and(eq color-actual 'en-rojo) (eq cambiar-a 'intermitencia)) 
+    ((and(eq color-actual 'en-rojo) (eq cambiar-a 'intermitencia))
         (list color-actual "cambiar-a-intermitencia"))
     
     ((and(eq color-actual 'en-intermitencia) (eq cambiar-a 'verde))
@@ -149,8 +149,9 @@
 (defun duracion-ciclo (segundos)
   (cond
     ((integerp segundos)
-      (list (nth-value 0 (floor segundos +duracion-ciclo-total+)) (recomendacion-ciclo +duracion-ciclo-total+)))
-  )
+      (list (nth-value 0 (floor segundos +duracion-ciclo-total+)) (recomendacion-ciclo segundos)))
+;nth 0 muestra el primer valor del floor que seria el cociente de la operacion(representa ciclos)
+    )
 )
 
 
@@ -165,13 +166,13 @@
 ;; IMPACTO: No destructiva
 ;; --------------------------------------------------------
 (defun recomendacion-ciclo (duracion)
-    (cond
-      ((integerp duracion)
-      (cond
-        ((< duracion 35) 'ciclo-corto)
-        ((<= 35 duracion 150) 'ciclo-optimo)
-        (t 'ciclo-largo))
-      )
+  (cond
+    ((integerp duracion)
+         (cond
+           ((< duracion 35)    'ciclo-corto)
+          ((<= duracion 150)  'ciclo-optimo)
+           (t'ciclo-largo))
+     )
     )
 )
 
@@ -188,7 +189,7 @@
 (defun ciclos-por-tiempo (minutos)
   (cond
     ((integerp minutos)
-      (nth-value 0 (floor (* minutos 60) +duracion-ciclo-total+))
+      (nth-value 0 (floor (* minutos 60) +duracion-ciclo-total+)) ;multiplico minutos por 60 para pasarla a segundos
     )
   )
 )
@@ -212,6 +213,7 @@
     (mapcar
       (lambda (x)
           (cons (car x)
+            ;; Retorna el porcentaje que ocupa un color en un ciclo.
             (* (/ (* (cdr x) ciclos-por-hora) 3600.0) 100.0))
         )
       
@@ -247,14 +249,14 @@
   (format t "*** Requerimiento 2: *** ~%")
   (format t "Camino Normal: ~a ~%" (semaforo-timer 200000)) ;devuelve EN-VERDE
   (format t "Camino alternativo: ~a% ~%" (semaforo-timer 2049340.02))  ;devuelve NIL
-  (format t "Camino por error: ~a ~%~%" (semaforo-timer 'symbol-malintencionado))
+  (format t "Camino por error: ~a ~%~%" (semaforo-timer 'symbol-malintencionado)) ;devuelve NIL
   (format t "---------------------------------------------------~%")
 
-  ;; ** Requerimiento 3:
+  ;; ** Requerimiento 3: 
   (format t "*** Requerimiento 3: *** ~%")
-  (format t "Camino Normal: ~a ~%" (log-cambio-estado 200000 'rojo 'verde))
-  (format t "Camino alternativo: ~a% ~%" (log-cambio-estado 20394994 "en rojo" "verde"))
-  (format t "Camino por error: ~a ~%~%" (log-cambio-estado 'timestampthing 'symbol 'other-symbol))
+  (format t "Camino Normal: ~a ~%" (log-cambio-estado 200000 'rojo 'verde)) ;DEVUELVE Tiempo 1970-01-03 07:33:20: la luz ha cambiado de ROJO a VERDE
+  (format t "Camino alternativo: ~a% ~%" (log-cambio-estado 20394994 "en rojo" "verde")) ;DEVUELVE Tiempo 1970-08-25 01:16:34: la luz ha cambiado de en rojo a verde
+  (format t "Camino por error: ~a ~%~%" (log-cambio-estado 'timestampthing 'symbol 'other-symbol)) ;DEVUELVE nil
   (format t "---------------------------------------------------~%")
 
   ;; ** Requerimiento 4a:
@@ -333,3 +335,4 @@
       datos)
   
     (format stream "~% --- Fin del Informe ---")))
+
