@@ -11,7 +11,8 @@
 ;;;   - Toda iteración via recursividad de cola o funciones de orden superior
 ;;; =========================================================
 
-
+;; Ajuste simple para evitar colisiones con packages de SBCL.
+(shadow 'timer)
 
 ;; ---------------------------------------------------------
 ;; CONSTANTES DE CONFIGURACIÓN (no son estado, son configuración)
@@ -78,7 +79,7 @@
 ;; =========================================================
 
 ;; --------------------------------------------------------
-;; FUNCIÓN: semaforo-timer
+;; FUNCIÓN: timer
 ;; NATURALEZA: Pura                 (Dado un timestamp, siempre retorna un color symbol)
 ;; ESTRATEGIA: Funcion Condicional  (evalúa condiciones sobre los argumentos) 
 ;; IMPACTO: No destructiva          (solo retorna un symbol)
@@ -93,7 +94,7 @@
 
 ;; Determina el estado actual del semáforo a partir
 ;; de un timestamp utilizando el ciclo configurado.
-(defun semaforo-timer (timestamp)
+(defun timer (timestamp)
   (cond
     ((integerp timestamp)
       (let ((offset (mod timestamp +duracion-ciclo-total+)))
@@ -247,9 +248,9 @@
 
   ;; ** Requerimiento 2:
   (format t "*** Requerimiento 2: *** ~%")
-  (format t "Camino Normal: ~a ~%" (semaforo-timer 200000)) ;devuelve EN-VERDE
-  (format t "Camino alternativo: ~a% ~%" (semaforo-timer 2049340.02))  ;devuelve NIL
-  (format t "Camino por error: ~a ~%~%" (semaforo-timer 'symbol-malintencionado)) ;devuelve NIL
+  (format t "Camino Normal: ~a ~%" (timer 200000)) ;devuelve EN-VERDE
+  (format t "Camino alternativo: ~a% ~%" (timer 2049340.02))  ;devuelve NIL
+  (format t "Camino por error: ~a ~%~%" (timer 'symbol-malintencionado)) ;devuelve NIL
   (format t "---------------------------------------------------~%")
 
   ;; ** Requerimiento 3: 
