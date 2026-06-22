@@ -2,9 +2,8 @@
 
 > Trabajo Práctico Integrador — Paradigmas y Lenguajes (PyL)  
 > FaCENA, Universidad Nacional del Nordeste — 2026  
-> **Sistema de Semáforos Inteligentes** en Common Lisp y Haskell
-
----
+> **Sistema de Semáforos Inteligentes** en Common Lisp y Haskell  
+> *Repositorio Oficial — Grupo N° 31*
 
 ## Integrantes
 
