@@ -109,4 +109,4 @@ TPI-Funcional-2026-Grupo31/
 
 Agradecemos a la cátedra por permitirnos presentar este trabajo práctico integrador y por el espacio de aprendizaje brindado. 
 
-— *Grupo N°31*
+ *Grupo N°31*
