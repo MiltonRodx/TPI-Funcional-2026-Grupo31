@@ -14,6 +14,10 @@
 ;; Ajuste simple para evitar colisiones con packages de SBCL.
 (shadow 'timer)
 
+; Cargar dependencias con quicklisp.
+(ql:quickload :local-time)
+
+
 ;; ---------------------------------------------------------
 ;; CONSTANTES DE CONFIGURACIÓN (no son estado, son configuración)
 ;; defconstant es la forma correcta — no viola la restricción de inmutabilidad
@@ -147,11 +151,12 @@
 ;; ESTRATEGIA: Condicional
 ;; IMPACTO: No destructiva
 ;; --------------------------------------------------------
+;nth 0 muestra el primer valor del floor que seria el cociente de la operacion(representa ciclos)
 (defun duracion-ciclo (segundos)
   (cond
     ((integerp segundos)
       (list (nth-value 0 (floor segundos +duracion-ciclo-total+)) (recomendacion-ciclo segundos)))
-;nth 0 muestra el primer valor del floor que seria el cociente de la operacion(representa ciclos)
+
     )
 )
 
@@ -336,4 +341,5 @@
       datos)
   
     (format stream "~% --- Fin del Informe ---")))
+
 
