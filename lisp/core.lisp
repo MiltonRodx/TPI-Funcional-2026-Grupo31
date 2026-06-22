@@ -49,17 +49,23 @@
 ;; --------------------------------------------------------
 (defun transicion (color-actual cambiar-a)
   (cond 
-    ((and(eq color-actual 'en-rojo) (eq cambiar-a 'intermitencia))
-        (list color-actual "cambiar-a-intermitencia"))
+    ((and(eq color-actual 'en-rojo) (eq cambiar-a 'rojo-intermitente))
+        (list color-actual "cambiar-a-rojo-intermitente"))
     
-    ((and(eq color-actual 'en-intermitencia) (eq cambiar-a 'verde))
+    ((and(eq color-actual 'rojo-intermitente) (eq cambiar-a 'verde))
         (list color-actual "cambiar-a-verde"))
     
-    ((and(eq color-actual 'en-verde) (eq cambiar-a 'intermitencia)) 
-        (list color-actual "cambiar-a-intermitencia"))
+    ((and(eq color-actual 'en-verde) (eq cambiar-a 'verde-intermitente)) 
+        (list color-actual "cambiar-a-verde-intermitente"))
 
-    ((and(eq color-actual 'en-intermitencia) (eq cambiar-a 'amarillo)) 
+    ((and(eq color-actual 'verde-intermitente) (eq cambiar-a 'amarillo)) 
         (list color-actual "cambiar-a-amarillo"))
+
+    ((and(eq color-actual 'en-amarillo) (eq cambiar-a 'amarillo-intermitente)) 
+        (list color-actual "cambiar-a-amarillo-intermitente"))
+
+    ((and(eq color-actual 'amarillo-intermitente) (eq cambiar-a 'rojo)) 
+        (list color-actual "cambiar-a-rojo"))
 
     ; originales:
     ((and(eq color-actual 'en-rojo) (eq cambiar-a 'verde))
@@ -90,11 +96,11 @@
 ;; --------------------------------------------------------
 
 ;; 0  - 89  → en-rojo
-;; 90 - 92  → intermitencia
+;; 90 - 92  → rojo-intermitente
 ;; 93 - 212 → en-verde
-;; 213- 215 → intermitencia
+;; 213- 215 → verde-intermitente
 ;; 216- 221 → en-amarillo
-;; 222- 224 → intermitencia
+;; 222- 224 → amarillo-intermitente
 
 ;; Determina el estado actual del semáforo a partir
 ;; de un timestamp utilizando el ciclo configurado.
@@ -104,11 +110,11 @@
       (let ((offset (mod timestamp +duracion-ciclo-total+)))
         (cond
           ((<= 0 offset 89) 'en-rojo)
-          ((<= 90 offset 92) 'intermitencia)
+          ((<= 90 offset 92) 'rojo-intermitente)
           ((<= 93 offset 212) 'en-verde)
-          ((<= 213 offset 215) 'intermitencia)
+          ((<= 213 offset 215) 'verde-intermitente)
           ((<= 216 offset 221) 'en-amarillo)
-          ((<= 222 offset 224) 'intermitencia)
+          ((<= 222 offset 224) 'amarillo-intermitente)
         )
       )
     )
@@ -227,7 +233,9 @@
         (cons 'rojo +duracion-rojo+)
         (cons 'amarillo +duracion-amarillo+)
         (cons 'verde +duracion-verde+)
-        (cons 'intermitencia (* 3 +duracion-intermitencia+))  ; 9 segundos en total (tres períodos)
+        (cons 'rojo-intermitente +duracion-intermitencia+)
+        (cons 'verde-intermitente +duracion-intermitencia+)
+        (cons 'amarillo-intermitente +duracion-intermitencia+)
       )
     )
   )
@@ -246,7 +254,7 @@
   ;; *** EJEMPLOS DE IMPLEMENTACION DE LOS REQUERIMIENTOS
   ;; ** Requerimiento 1:
   (format t "*** Requerimiento 1: *** ~%")
-  (format t "Camino Normal: ~a ~%" (transicion 'en-rojo 'verde))    ;devuelve (EN-ROJO "cambiar-a-verde")
+  (format t "Camino Normal: ~a ~%" (transicion 'en-rojo 'rojo-intermitente))    ;devuelve (EN-ROJO "cambiar-a-rojo-intermitente")
   (format t "Camino alternativo: ~a% ~%" (transicion 'en-verde 'verde)) ;devuelve (EN-VERDE ACCION-POR-DEFECTO)
   (format t "Camino por error: ~a ~%~%" (transicion 'hola 'mundo)); devuelve (HOLA ACCION-POR-DEFECTO)
   (format t "---------------------------------------------------~%")
@@ -260,7 +268,7 @@
 
   ;; ** Requerimiento 3: 
   (format t "*** Requerimiento 3: *** ~%")
-  (format t "Camino Normal: ~a ~%" (log-cambio-estado 200000 'rojo 'verde)) ;DEVUELVE Tiempo 1970-01-03 07:33:20: la luz ha cambiado de ROJO a VERDE
+  (format t "Camino Normal: ~a ~%" (log-cambio-estado 200000 'rojo-intermitente 'verde)) ;DEVUELVE Tiempo 1970-01-03 07:33:20: la luz ha cambiado de ROJO-INTERMITENTE a VERDE
   (format t "Camino alternativo: ~a% ~%" (log-cambio-estado 20394994 "en rojo" "verde")) ;DEVUELVE Tiempo 1970-08-25 01:16:34: la luz ha cambiado de en rojo a verde
   (format t "Camino por error: ~a ~%~%" (log-cambio-estado 'timestampthing 'symbol 'other-symbol)) ;DEVUELVE nil
   (format t "---------------------------------------------------~%")
@@ -295,7 +303,7 @@
 
   ;; ** Iteración 2:
   ;; Sistema de Persistencia sobre Archivos de texto Plano:
-  (informe '((123923 rojo verde) (29349234 amarillo rojo) (2032032 rojo verde)))
+  (informe '((123923 en-rojo rojo-intermitente) (123926 rojo-intermitente en-verde) (29349234 en-amarillo amarillo-intermitente) (29349237 amarillo-intermitente en-rojo) (2032032 en-rojo rojo-intermitente)))
 )
 
 
@@ -341,5 +349,3 @@
       datos)
   
     (format stream "~% --- Fin del Informe ---")))
-
-

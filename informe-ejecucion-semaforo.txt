@@ -1,7 +1,9 @@
 Informe de Ejecución del Sistema Semafórico
 =========================================
-1970-01-02 10:25:23 - Transición: ROJO -> VERDE
-1970-12-06 16:33:54 - Transición: AMARILLO -> ROJO
-1970-01-24 12:27:12 - Transición: ROJO -> VERDE
+1970-01-02 10:25:23 - Transición: EN-ROJO -> ROJO-INTERMITENTE
+1970-01-02 10:25:26 - Transición: ROJO-INTERMITENTE -> EN-VERDE
+1970-12-06 16:33:54 - Transición: EN-AMARILLO -> AMARILLO-INTERMITENTE
+1970-12-06 16:33:57 - Transición: AMARILLO-INTERMITENTE -> EN-ROJO
+1970-01-24 12:27:12 - Transición: EN-ROJO -> ROJO-INTERMITENTE
 
  --- Fin del Informe ---
